@@ -74,17 +74,17 @@ The reference validation R² values are:
 
 | Model | Validation R² |
 |---|---:|
-| Linear Regression | 0.931 |
-| Decision Tree | 0.887 |
-| Random Forest | 0.914 |
-| Gradient Boosting | 0.931 |
+| Linear Regression | 0.9313 |
+| Decision Tree | 0.8867 |
+| Random Forest | 0.9128 |
+| Gradient Boosting | 0.9306 |
 
 The final model should be selected according to the lowest validation RMSE, as required by the project.
 
-- **Best model:** [Check `outputs/part_b_metrics.csv`]
-- **Best validation RMSE:** [Check `outputs/part_b_metrics.csv`]
-- **Best tree depth:** [Check `outputs/part_b_tree_depth.csv`]
-- **Best learning rate:** [Check `outputs/part_b_gb_learning_rate.csv`]
+- **Best model:** Linear Regression
+- **Best validation RMSE:** 4.8912
+- **Best tree depth:** 6
+- **Best learning rate:** 0.1
 
 The tree-depth experiment helps compare high-bias and high-variance behaviour. The learning-rate experiment shows how different learning rates affect Gradient Boosting performance.
 
@@ -116,9 +116,15 @@ Final results should be checked against these files:
 - `outputs/part_c_final_test.csv`
 - `outputs/part_c_thresholds.csv`
 
-**Chosen threshold:** [Check `outputs/part_c_final_config.csv`]
+**Chosen threshold:** 0.5
 
-**Test precision, recall, and F1-score:** [Check `outputs/part_c_final_test.csv`]
+**Test Accuracy:** 0.8667
+
+**Test Precision:** 0.6889
+
+**Test Recall:** 0.7561
+
+**Test F1-score:** 0.7209
 
 Precision indicates how many flagged shipments are actually delayed, while recall indicates how many delayed shipments the model successfully identifies.
 
@@ -134,9 +140,9 @@ The reference segment profiles are:
 
 | Segment | Number of Hubs | Average Delay Rate |
 |---|---:|---:|
-| Standard | 7 | 2.57% |
-| Watch | 8 | 15.50% |
-| Escalate | 9 | 46.00% |
+| Standard | 7 | 0.025714285714285714 |
+| Watch | 8 | 0.155 |
+| Escalate | 9 | 0.4600000000000001 |
 
 These figures should be verified against `outputs/segment_profile.csv`.
 
@@ -163,11 +169,14 @@ The action depends on the shipment's predicted risk and hub segment:
 
 The following results must be filled in from the generated output files:
 
-- **Alert threshold:** [Check `outputs/part_c_final_config.csv`]
-- **Precision and recall:** [Check `outputs/part_c_final_test.csv`]
+- **Alert threshold:** 0.5
+- **Precision:** 0.6889
+- **Recall:** 0.7561
 - **Total new shipments:** 48
-- **Flagged shipments:** [Check `outputs/new_shipment_actions.csv`]
-- **Shipments requiring hub-manager escalation:** [Check `outputs/new_shipment_actions.csv`]
+- **Flagged shipments:** 6
+- **Shipments requiring hub-manager escalation:** 5
+- **Shipments requiring proactive customer call:** 1
+- **Shipments requiring no action:** 42
 
 K = 3 is retained because the operations team requires three segments with separate action plans. Although the separation ratio increases for K = 4 and K = 5, these solutions contain clusters with fewer than six hubs. Such small groups may be too small to justify a separate operational playbook. The comparison is available in `outputs/part_d_separation.csv`.
 
